@@ -12,7 +12,8 @@
             <div class="card-body">
 
                 <h4 class="card-title">Edit Profile Page</h4>
-                <form>
+                <form method="post" action="{{ route('store.profile') }}" enctype="multipart/form-data">
+                    @csrf
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
@@ -44,7 +45,7 @@
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
-                    <img class="rounded avatar-lg" id="showImage" src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                    <img class="rounded avatar-lg" id="showImage" src="{{ (!empty($editData->profile_image))? url('upload/admin_images/'.$editData->profile_image): url('upload/no_image.jpg') }}" alt="Card image cap">
                     </div>
                 </div>
                 <!-- end row -->
